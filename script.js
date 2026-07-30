@@ -37,7 +37,7 @@ const SCENES = {
     ]
   },
   2: {
-    title: "Daylight makes the same wave — but earlier",
+    title: "Daylight wave leads temperature",
     blurb: "Daylight follows an identical path, yet the hottest month comes two months after the longest day.",
     cities: ["Houston"], daylight: true, explore: false, hint: "Press Next to continue.",
     notes: () => [
@@ -46,7 +46,7 @@ const SCENES = {
     ]
   },
   3: {
-    title: "Every city, same shape - different size",
+    title: "Every city, same shape but different size",
     blurb: "All four cities peak in summer and bottom out in winter, but how far they swing depends on their geography, not just latitude.",
     cities: CITIES, daylight: false, explore: false, hint: "Press Next to continue.",
     notes: () => [
