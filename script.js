@@ -1,4 +1,4 @@
-/* Why Summer Is Warm — parameters, scenes, triggers, annotations (D3 v7 + d3-annotation) */
+/* Why Summer Is Warm: parameters, scenes, triggers, annotations (D3 v7 + d3-annotation) */
 
 const W = 820, H = 460, M = { top: 20, right: 60, bottom: 46, left: 52 };
 const iw = W - M.left - M.right, ih = H - M.top - M.bottom;
@@ -12,10 +12,10 @@ const x  = d3.scaleLinear().domain([1, 12]).range([0, iw]);
 const yT = d3.scaleLinear().domain([25, 100]).range([ih, 0]);   // °F
 const yD = d3.scaleLinear().domain([8, 16]).range([ih, 0]);     // daylight hours
 
-// PARAMETERS — the entire state of the visualization
+// PARAMETERS: the entire state of the visualization
 const state = { scene: 1, city: "Houston", hovered: null };
 
-// ANNOTATIONS — one template (circle + leader line + title + sentence) reused everywhere
+// ANNOTATIONS: one template (circle + leader line + title + sentence) reused everywhere
 function note(title, label, px, py, dx, dy, wrap = 190) {
   return {
     type: d3.annotationCalloutCircle,
@@ -25,20 +25,20 @@ function note(title, label, px, py, dx, dy, wrap = 190) {
   };
 }
 
-// SCENES — each entry fully describes that step: text, data, and its own annotations
+// SCENES: each entry fully describes that step: text, data, and its own annotations
 const SCENES = {
   1: {
-    title: "Houston has one cycle a year",
-    blurb: "The average daily high climbs from winter to late summer and falls back again.",
+    title: "Houston Temperature: one cycle a year",
+    blurb: "The average daily high climbs from winter to late summer and falls as winter approaches.",
     cities: ["Houston"], daylight: false, explore: false, hint: "Press Next to continue.",
     notes: () => [
-      note("August is the peak", "94.9°F — 31 degrees warmer than January.", x(8), yT(94.9), 6, 175),
+      note("August is the peak", "94.9°F - 31 degrees warmer than January.", x(8), yT(94.9), 6, 175),
       note("January is the floor", "63.8°F. From here the curve only climbs for seven months.", x(1), yT(63.8), 34, 118)
     ]
   },
   2: {
-    title: "Daylight makes the same wave — but earlier",
-    blurb: "Daylight follows an identical rhythm, yet the hottest month comes two months after the longest day.",
+    title: "Daylight wave leads temperature",
+    blurb: "Daylight follows an identical path, yet the hottest month comes two months after the longest day.",
     cities: ["Houston"], daylight: true, explore: false, hint: "Press Next to continue.",
     notes: () => [
       note("Daylight peaks in June", "Houston's longest day gives it 14.1 hours of light.", x(6), yD(14.06), 230, -72, 150),
@@ -46,17 +46,17 @@ const SCENES = {
     ]
   },
   3: {
-    title: "Every city, same shape — very different size",
-    blurb: "All four peak in summer and bottom out in winter, but how far they swing depends on geography, not just latitude.",
+    title: "Different Cities: same shape but different size",
+    blurb: "All four cities peak in summer and bottom out in winter, but how far they swing depends on their geography.",
     cities: CITIES, daylight: false, explore: false, hint: "Press Next to continue.",
     notes: () => [
       note("Los Angeles barely moves", "A 16.6°F range all year, despite a wider daylight swing than Houston's.", x(1), yT(68.0), 50, -120),
-      note("Chicago swings 53°F", "31.6°F in January to 84.5°F in July — the widest range of the four.", x(1), yT(31.6), 470, -22)
+      note("Chicago swings 53°F", "31.6°F in January to 84.5°F in July, the widest range of the four.", x(1), yT(31.6), 470, -22)
     ]
   },
   4: {
     title: "Now look for yourself",
-    blurb: "Pick a city to compare its temperature curve to its own daylight curve, and hover any point for the numbers.",
+    blurb: "Pick a city to compare its temperature curve to its own daylight curve.",
     cities: CITIES, daylight: true, explore: true, hint: "Pick a city, then hover any point on the line.",
     notes: () => {
       const rows = byCity.get(state.city);
