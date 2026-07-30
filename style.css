@@ -1,4 +1,3 @@
-/* Why Summer Is Warm — styles */
 
 :root{ --ink:#1A1F24; --soft:#5C6773; --rule:#D3DAE0; --bg:#E9EDF0; }
 
@@ -22,8 +21,8 @@ svg#chart{ width:100%; height:auto; display:block; overflow:visible; }
 .axis text{ font-size:11.5px; fill:var(--soft); }
 
 .tline{ fill:none; stroke-linecap:round; }
-.dayline{ fill:none; stroke:#C99A2E; stroke-width:2; stroke-dasharray:5 4; }
-.dayarea{ fill:#E9C46A; fill-opacity:.2; }
+.dayline{ fill:none; stroke-width:2; stroke-dasharray:5 4; }
+.dayarea{ fill-opacity:.2; }
 .dot{ stroke:#fff; stroke-width:1.5; cursor:pointer; }
 
 .annotation-note-title{ font-size:12.5px; font-weight:700; fill:var(--ink); }
@@ -39,7 +38,6 @@ svg#chart{ width:100%; height:auto; display:block; overflow:visible; }
 .legend{ font-size:12.5px; color:var(--soft); }
 .legend span{ display:inline-flex; align-items:center; gap:7px; }
 .key{ width:16px; height:3px; border-radius:2px; display:inline-block; }
-.key.dashed{ background:repeating-linear-gradient(90deg,#C99A2E 0 5px,transparent 5px 9px); }
 
 .chips{ display:flex; flex-wrap:wrap; gap:8px; }
 .chip, .nav button{

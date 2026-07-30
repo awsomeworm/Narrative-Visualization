@@ -41,7 +41,7 @@ const SCENES = {
     blurb: "Daylight follows an identical path, yet the hottest month comes two months after the longest day.",
     cities: ["Houston"], daylight: true, explore: false, hint: "Press Next to continue.",
     notes: () => [
-      note("Daylight peaks in June", "Houston's longest day gives it 14.1 hours of light.", x(6), yD(14.06), 230, -72, 150),
+      note("Daylight peaks in June", "Houston's longest day gives it 14.1 hours of light.", x(6), yD(14.06), -90, -75, 150),
       note("The heat peaks two months later", "Ground and water keep absorbing warmth even as days shorten.", x(8), yT(94.9), -20, 250)
     ]
   },
@@ -114,8 +114,10 @@ function buildChips() {
 // true once a city is selected (scene 4) and this line isn't it
 const dim = c => state.scene === 4 && c !== state.city;
 
-function drawDay(sel, cls, gen, data) {
-  sel.selectAll("path").data(data).join("path").attr("class", cls).attr("d", gen);
+function drawDay(sel, cls, gen, colorAttr, data) {
+  sel.selectAll("path").data(data).join("path")
+    .attr("class", cls).attr("d", gen)
+    .attr(colorAttr, d => COLOR[d[0].city]);
 }
 
 function render() {
@@ -134,8 +136,8 @@ function render() {
 
   const dayCity = S.daylight ? (state.scene === 4 ? state.city : "Houston") : null;
   const dayData = dayCity ? [byCity.get(dayCity)] : [];
-  drawDay(gArea, "dayarea", areaDay, dayData);
-  drawDay(gDay, "dayline", lineDay, dayData);
+  drawDay(gArea, "dayarea", areaDay, "fill", dayData);
+  drawDay(gDay, "dayline", lineDay, "stroke", dayData);
 
   gTemp.selectAll("path").data(S.cities, c => c).join("path")
     .attr("class", "tline")
@@ -154,14 +156,16 @@ function render() {
   gAnno.selectAll("*").remove();
   gAnno.call(d3.annotation().annotations(S.notes()));
 
-  drawLegend(S);
+  drawLegend(S, dayCity);
 }
 
-function drawLegend(S) {
+function drawLegend(S, dayCity) {
   const items = S.cities.map(c => ({ label: c, color: COLOR[c] }));
-  if (S.daylight) items.push({ label: "Daylight hours", dashed: true });
+  if (S.daylight) items.push({ label: "Daylight hours", color: COLOR[dayCity], dashed: true });
   d3.select("#legend").selectAll("span").data(items, d => d.label).join("span")
-    .html(d => (d.dashed ? `<i class="key dashed"></i>` : `<i class="key" style="background:${d.color}"></i>`) + d.label);
+    .html(d => `<i class="key" style="background:${d.dashed
+        ? `repeating-linear-gradient(90deg,${d.color} 0 5px,transparent 5px 9px)`
+        : d.color}"></i>${d.label}`);
 }
 
 function showTip(event, d) {
