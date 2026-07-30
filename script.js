@@ -29,7 +29,7 @@ function note(title, label, px, py, dx, dy, wrap = 190) {
 const SCENES = {
   1: {
     title: "Houston has one cycle a year",
-    blurb: "The average daily high climbs from winter to late summer and falls back again.",
+    blurb: "The average daily high climbs from winter to late summer and falls as winter approaches.",
     cities: ["Houston"], daylight: false, explore: false, hint: "Press Next to continue.",
     notes: () => [
       note("August is the peak", "94.9°F — 31 degrees warmer than January.", x(8), yT(94.9), 6, 175),
@@ -38,7 +38,7 @@ const SCENES = {
   },
   2: {
     title: "Daylight makes the same wave — but earlier",
-    blurb: "Daylight follows an identical rhythm, yet the hottest month comes two months after the longest day.",
+    blurb: "Daylight follows an identical path, yet the hottest month comes two months after the longest day.",
     cities: ["Houston"], daylight: true, explore: false, hint: "Press Next to continue.",
     notes: () => [
       note("Daylight peaks in June", "Houston's longest day gives it 14.1 hours of light.", x(6), yD(14.06), 230, -72, 150),
@@ -46,8 +46,8 @@ const SCENES = {
     ]
   },
   3: {
-    title: "Every city, same shape — very different size",
-    blurb: "All four peak in summer and bottom out in winter, but how far they swing depends on geography, not just latitude.",
+    title: "Every city, same shape — different size",
+    blurb: "All four cities peak in summer and bottom out in winter, but how far they swing depends on their geography, not just latitude.",
     cities: CITIES, daylight: false, explore: false, hint: "Press Next to continue.",
     notes: () => [
       note("Los Angeles barely moves", "A 16.6°F range all year, despite a wider daylight swing than Houston's.", x(1), yT(68.0), 50, -120),
@@ -56,7 +56,7 @@ const SCENES = {
   },
   4: {
     title: "Now look for yourself",
-    blurb: "Pick a city to compare its temperature curve to its own daylight curve, and hover any point for the numbers.",
+    blurb: "Pick a city to compare its temperature curve to its own daylight curve.",
     cities: CITIES, daylight: true, explore: true, hint: "Pick a city, then hover any point on the line.",
     notes: () => {
       const rows = byCity.get(state.city);
