@@ -46,8 +46,8 @@ const SCENES = {
     ]
   },
   3: {
-    title: "Every city, same shape but different size",
-    blurb: "All four cities peak in summer and bottom out in winter, but how far they swing depends on their geography, not just latitude.",
+    title: "Different Cities: same shape but different size",
+    blurb: "All four cities peak in summer and bottom out in winter, but how far they swing depends on their geography.",
     cities: CITIES, daylight: false, explore: false, hint: "Press Next to continue.",
     notes: () => [
       note("Los Angeles barely moves", "A 16.6°F range all year, despite a wider daylight swing than Houston's.", x(1), yT(68.0), 50, -120),
