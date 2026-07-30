@@ -28,7 +28,7 @@ function note(title, label, px, py, dx, dy, wrap = 190) {
 // SCENES: each entry fully describes that step: text, data, and its own annotations
 const SCENES = {
   1: {
-    title: "Houston: one temperature cycle a year",
+    title: "Houston Temperature: one cycle a year",
     blurb: "The average daily high climbs from winter to late summer and falls as winter approaches.",
     cities: ["Houston"], daylight: false, explore: false, hint: "Press Next to continue.",
     notes: () => [
