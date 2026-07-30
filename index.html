@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How Temperature shifts</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<main class="page">
+
+  <header class="head">
+    <p class="kicker">Monthly climate normals, 1991&ndash;2020</p>
+    <h1>How Temperature shifts</h1>
+    <p class="deck">Daylight sets the pattern for the year. Geography decides how big the swing is.</p>
+  </header>
+
+  <section class="card">
+
+    <div class="scene-text">
+      <p class="scene-no" id="sceneNo"></p>
+      <h2 id="sceneTitle"></h2>
+      <p id="sceneBlurb"></p>
+    </div>
+
+    <div class="plot">
+      <svg id="chart"></svg>
+      <div class="tip" id="tip"></div>
+    </div>
+
+    <div class="legend" id="legend"></div>
+
+    <div class="explore" id="explore" hidden>
+      <span class="explore-label">Choose a city</span>
+      <div class="chips" id="chips"></div>
+    </div>
+
+  </section>
+
+  <nav class="nav">
+    <button id="back" type="button">&larr; Back</button>
+    <p class="hint" id="hint"></p>
+    <button id="next" type="button" class="primary">Next &rarr;</button>
+  </nav>
+
+  <footer class="foot">
+    <p>Average daily high temperatures are NOAA 1991&ndash;2020 climate normals for Houston Intercontinental,
+    Los Angeles Downtown, New York Central Park and Chicago O&rsquo;Hare.</p>
+  </footer>
+
+</main>
+
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-annotation/2.5.1/d3-annotation.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

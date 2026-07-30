@@ -1,0 +1,49 @@
+city,station,latitude,month,month_num,avg_high_f,daylight_hours
+Houston,IAH,29.98,Jan,1,63.8,10.41
+Houston,IAH,29.98,Feb,2,67.8,11.09
+Houston,IAH,29.98,Mar,3,74.0,11.94
+Houston,IAH,29.98,Apr,4,80.1,12.87
+Houston,IAH,29.98,May,5,86.9,13.64
+Houston,IAH,29.98,Jun,6,92.3,14.06
+Houston,IAH,29.98,Jul,7,94.5,13.91
+Houston,IAH,29.98,Aug,8,94.9,13.26
+Houston,IAH,29.98,Sep,9,90.4,12.39
+Houston,IAH,29.98,Oct,10,82.8,11.49
+Houston,IAH,29.98,Nov,11,72.6,10.67
+Houston,IAH,29.98,Dec,12,65.3,10.23
+Los Angeles,Downtown USC,34.02,Jan,1,68.0,10.12
+Los Angeles,Downtown USC,34.02,Feb,2,68.0,10.92
+Los Angeles,Downtown USC,34.02,Mar,3,69.9,11.91
+Los Angeles,Downtown USC,34.02,Apr,4,72.4,13.0
+Los Angeles,Downtown USC,34.02,May,5,73.7,13.9
+Los Angeles,Downtown USC,34.02,Jun,6,77.2,14.4
+Los Angeles,Downtown USC,34.02,Jul,7,82.0,14.22
+Los Angeles,Downtown USC,34.02,Aug,8,84.0,13.46
+Los Angeles,Downtown USC,34.02,Sep,9,83.0,12.44
+Los Angeles,Downtown USC,34.02,Oct,10,78.6,11.39
+Los Angeles,Downtown USC,34.02,Nov,11,72.9,10.43
+Los Angeles,Downtown USC,34.02,Dec,12,67.4,9.91
+New York,Central Park,40.78,Jan,1,39.5,9.55
+New York,Central Park,40.78,Feb,2,42.2,10.59
+New York,Central Park,40.78,Mar,3,49.9,11.86
+New York,Central Park,40.78,Apr,4,61.8,13.25
+New York,Central Park,40.78,May,5,71.5,14.42
+New York,Central Park,40.78,Jun,6,79.7,15.08
+New York,Central Park,40.78,Jul,7,84.8,14.84
+New York,Central Park,40.78,Aug,8,83.4,13.85
+New York,Central Park,40.78,Sep,9,76.3,12.53
+New York,Central Park,40.78,Oct,10,64.5,11.2
+New York,Central Park,40.78,Nov,11,54.1,9.95
+New York,Central Park,40.78,Dec,12,44.4,9.27
+Chicago,O'Hare,41.98,Jan,1,31.6,9.44
+Chicago,O'Hare,41.98,Feb,2,35.7,10.52
+Chicago,O'Hare,41.98,Mar,3,47.0,11.86
+Chicago,O'Hare,41.98,Apr,4,59.0,13.31
+Chicago,O'Hare,41.98,May,5,70.5,14.53
+Chicago,O'Hare,41.98,Jun,6,80.4,15.21
+Chicago,O'Hare,41.98,Jul,7,84.5,14.97
+Chicago,O'Hare,41.98,Aug,8,82.5,13.93
+Chicago,O'Hare,41.98,Sep,9,75.5,12.55
+Chicago,O'Hare,41.98,Oct,10,62.7,11.16
+Chicago,O'Hare,41.98,Nov,11,48.4,9.86
+Chicago,O'Hare,41.98,Dec,12,36.6,9.15

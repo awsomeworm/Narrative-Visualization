@@ -1,0 +1,70 @@
+/* Why Summer Is Warm — styles */
+
+:root{ --ink:#1A1F24; --soft:#5C6773; --rule:#D3DAE0; --bg:#E9EDF0; }
+
+*{ box-sizing:border-box; }
+body{ margin:0; background:var(--bg); color:var(--ink); font:15px/1.55 system-ui, sans-serif; }
+.page{ max-width:900px; margin:0 auto; padding:40px 20px 60px; }
+
+h1, h2{ font-family:Georgia, serif; font-weight:normal; margin:0 0 10px; }
+h1{ font-size:clamp(32px,6vw,50px); }
+h2{ font-size:clamp(20px,3vw,26px); }
+
+.kicker, .scene-no{ font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--soft); margin:0 0 8px; }
+.deck{ margin:0; max-width:46ch; color:var(--soft); font-size:16px; }
+
+.card{ background:#fff; border:1px solid var(--rule); border-radius:4px; padding:22px; margin-top:30px; }
+.card p:last-of-type{ margin:0; max-width:62ch; color:var(--soft); font-size:14.5px; }
+
+.plot{ position:relative; margin-top:14px; }
+svg#chart{ width:100%; height:auto; display:block; overflow:visible; }
+.axis path, .axis line{ stroke:var(--rule); }
+.axis text{ font-size:11.5px; fill:var(--soft); }
+
+.tline{ fill:none; stroke-linecap:round; }
+.dayline{ fill:none; stroke:#C99A2E; stroke-width:2; stroke-dasharray:5 4; }
+.dayarea{ fill:#E9C46A; fill-opacity:.2; }
+.dot{ stroke:#fff; stroke-width:1.5; cursor:pointer; }
+
+.annotation-note-title{ font-size:12.5px; font-weight:700; fill:var(--ink); }
+.annotation-note-label{ font-size:12px; fill:var(--soft); }
+.annotation-note-bg{ fill:#fff; fill-opacity:.9; }
+.annotation path.connector, .annotation .subject path{ stroke:var(--ink); stroke-width:1.1; fill:none; }
+
+.legend, .explore{
+  display:flex; align-items:center; flex-wrap:wrap; gap:14px;
+  border-top:1px solid var(--rule); margin-top:14px; padding-top:12px;
+}
+.explore[hidden]{ display:none; }
+.legend{ font-size:12.5px; color:var(--soft); }
+.legend span{ display:inline-flex; align-items:center; gap:7px; }
+.key{ width:16px; height:3px; border-radius:2px; display:inline-block; }
+.key.dashed{ background:repeating-linear-gradient(90deg,#C99A2E 0 5px,transparent 5px 9px); }
+
+.chips{ display:flex; flex-wrap:wrap; gap:8px; }
+.chip, .nav button{
+  border:1px solid var(--rule); background:none; border-radius:999px;
+  font:inherit; font-size:13.5px; color:var(--soft); cursor:pointer;
+}
+.chip{ display:inline-flex; align-items:center; gap:7px; padding:6px 14px; }
+.chip .key{ width:12px; height:12px; border-radius:50%; }
+.chip:hover, .nav button:hover, .chip[aria-pressed="true"]{ border-color:var(--ink); color:var(--ink); }
+.chip[aria-pressed="true"]{ background:#F1F4F6; }
+
+.nav{ display:flex; align-items:center; justify-content:space-between; gap:16px; margin-top:18px; }
+.nav button{ border-color:var(--ink); color:var(--ink); padding:9px 20px; }
+.nav button:hover{ background:var(--ink); color:#fff; }
+.nav .primary{ background:var(--ink); color:#fff; }
+.nav button:disabled{ opacity:.28; cursor:default; background:none; color:var(--ink); }
+
+.hint, .foot{ margin:0; font-size:12.5px; color:var(--soft); }
+.foot{ margin-top:24px; max-width:74ch; }
+
+.tip{
+  position:absolute; pointer-events:none; opacity:0; transition:opacity .12s;
+  transform:translate(-50%,-115%); white-space:nowrap;
+  background:var(--ink); color:#fff; border-radius:4px; padding:8px 11px; font-size:12.5px;
+}
+.tip b{ display:block; margin-bottom:3px; }
+
+:focus-visible{ outline:2px solid var(--newyork,#2C7A9E); outline-offset:2px; }
