@@ -31,14 +31,15 @@ svg#chart{ width:100%; height:auto; display:block; overflow:visible; }
 .annotation-note-bg{ fill:#fff; fill-opacity:.9; }
 .annotation path.connector, .annotation .subject path{ stroke:var(--ink); stroke-width:1.1; fill:none; }
 
-.legend, .explore{
-  display:flex; align-items:center; flex-wrap:wrap; gap:14px;
-  border-top:1px solid var(--rule); margin-top:14px; padding-top:12px;
-}
+.legend, .explore{ border-top:1px solid var(--rule); margin-top:14px; padding-top:12px; }
+.explore{ display:flex; align-items:center; flex-wrap:wrap; gap:14px; }
 .explore[hidden]{ display:none; }
-.legend{ font-size:12.5px; color:var(--soft); }
+.legend{ display:flex; flex-direction:column; gap:8px; font-size:12.5px; color:var(--soft); }
+.legend-row{ display:flex; align-items:center; flex-wrap:wrap; gap:14px; }
+.legend-row[hidden]{ display:none; }
 .legend span{ display:inline-flex; align-items:center; gap:7px; }
 .key{ width:16px; height:3px; border-radius:2px; display:inline-block; }
+.key.dot{ width:10px; height:10px; border-radius:50%; }
 
 .chips{ display:flex; flex-wrap:wrap; gap:8px; }
 .chip, .nav button{

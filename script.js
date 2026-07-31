@@ -38,8 +38,8 @@ const SCENES = {
     blurb: "The Earth's surface continues absorbing heat after the summer solstice, resulting in a thermal lag between daylight and temperature.",
     cities: ["Houston"], daylight: true, explore: false, hint: "Press Next to continue.",
     notes: () => [
-      note("Longest Day — June", "Houston gets 14.1 hours of daylight, the most of the year.", x(6), yD(14.06), -180, 110, 160),
-      note("Warmest Month — August", "94.9°F — about two months after the daylight peak.", x(8), yT(94.9), -20, 250)
+      note("Longest Day - June", "Houston gets 14.1 hours of daylight, the most of the year.", x(6), yD(14.06), -180, 110, 160),
+      note("Warmest Month - August", "94.9°F, about two months after the daylight peak.", x(8), yT(94.9), -20, 250)
     ]
   },
   3: {
@@ -48,11 +48,11 @@ const SCENES = {
     cities: CITIES, daylight: false, explore: false, hint: "Press Next to continue.",
     notes: () => [
       note("Los Angeles barely moves", "A 16.6°F range all year, despite a wider daylight swing than Houston's.", x(1), yT(68.0), 50, -120),
-      note("Chicago swings 53°F", "31.6°F in January to 84.5°F in July, the widest range of the four.", x(1), yT(31.6), 470, -22)
+      note("Same Daylight, Different Heat", "In September, Houston and LA get almost identical daylight (12.4 hours), but Houston is at 90.4°F while LA has cooled to 83.0°F.", x(9), yT(90.4), -100, 180, 200)
     ]
   },
   4: {
-    title: "Explore the Daylight–Temperature Relationship",
+    title: "Explore the Daylight-Temperature Relationship",
     blurb: "Select a city to compare its annual daylight and temperature cycles.",
     cities: CITIES, daylight: true, explore: true, hint: "Pick a city, then hover any point on the line.",
     notes: () => {
@@ -95,7 +95,7 @@ d3.csv("seasons.csv", d3.autoType).then(rows => {
   buildChips();
   render();
 }).catch(() => {
-  d3.select(".plot").html("<p>seasons.csv did not load — run this folder through a local web server (see README).</p>");
+  d3.select(".plot").html("<p>seasons.csv did not load. Run this folder through a local web server (see README).</p>");
 });
 
 // TRIGGERS
@@ -161,16 +161,23 @@ function render() {
   gAnno.selectAll("*").remove();
   gAnno.call(d3.annotation().annotations(S.notes()));
 
-  drawLegend(S, dayCity);
+  drawLegend(S);
 }
 
-function drawLegend(S, dayCity) {
-  const items = S.cities.map(c => ({ label: c, color: COLOR[c] }));
-  if (S.daylight) items.push({ label: "Daylight hours", color: COLOR[dayCity], dashed: true });
-  d3.select("#legend").selectAll("span").data(items, d => d.label).join("span")
+// legend has two rows: which cities are which color, and which line style is which measure
+function drawLegend(S) {
+  const cities = S.explore ? [] : S.cities.map(c => ({ label: c, color: COLOR[c] }));
+  const lines = [{ label: "Temperature" }];
+  if (S.daylight) lines.push({ label: "Daylight hours", dashed: true });
+
+  d3.select("#legendCities").property("hidden", cities.length === 0)
+    .selectAll("span").data(cities, d => d.label).join("span")
+    .html(d => `<i class="key dot" style="background:${d.color}"></i>${d.label}`);
+
+  d3.select("#legendLines").selectAll("span").data(lines, d => d.label).join("span")
     .html(d => `<i class="key" style="background:${d.dashed
-        ? `repeating-linear-gradient(90deg,${d.color} 0 5px,transparent 5px 9px)`
-        : d.color}"></i>${d.label}`);
+        ? "repeating-linear-gradient(90deg,var(--ink) 0 5px,transparent 5px 9px)"
+        : "var(--ink)"}"></i>${d.label}`);
 }
 
 function showTip(event, d) {
