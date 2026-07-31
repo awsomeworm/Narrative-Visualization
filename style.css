@@ -19,6 +19,7 @@ h2{ font-size:clamp(20px,3vw,26px); }
 svg#chart{ width:100%; height:auto; display:block; overflow:visible; }
 .axis path, .axis line{ stroke:var(--rule); }
 .axis text{ font-size:11.5px; fill:var(--soft); }
+.axis-title{ font-size:11.5px; fill:var(--soft); }
 
 .tline{ fill:none; stroke-linecap:round; }
 .dayline{ fill:none; stroke-width:2; stroke-dasharray:5 4; }

@@ -1,6 +1,6 @@
 /* Why Summer Is Warm: parameters, scenes, triggers, annotations (D3 v7 + d3-annotation) */
 
-const W = 820, H = 460, M = { top: 20, right: 60, bottom: 46, left: 52 };
+const W = 820, H = 460, M = { top: 20, right: 70, bottom: 46, left: 58 };
 const iw = W - M.left - M.right, ih = H - M.top - M.bottom;
 
 const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
@@ -28,26 +28,23 @@ function note(title, label, px, py, dx, dy, wrap = 190) {
 // SCENES: each entry fully describes that step: text, data, and its own annotations
 const SCENES = {
   1: {
-    title: "Houston Temperature: one cycle a year",
-    blurb: "The average daily high climbs from winter to late summer and falls as winter approaches.",
-    cities: ["Houston"], daylight: false, explore: false, hint: "Press Next to continue.",
-    notes: () => [
-      note("August is the peak", "94.9°F - 31 degrees warmer than January.", x(8), yT(94.9), 6, 175),
-      note("January is the floor", "63.8°F. From here the curve only climbs for seven months.", x(1), yT(63.8), 34, 118)
-    ]
+    title: "Temperature Follows Daylight",
+    blurb: "As daylight increases from winter to summer, temperatures rise in response, creating a predictable seasonal cycle.",
+    cities: ["Houston"], daylight: true, explore: false, hint: "Press Next to continue.",
+    notes: () => []
   },
   2: {
-    title: "Daylight wave leads temperature",
-    blurb: "Daylight follows an identical path, yet the hottest month comes two months after the longest day.",
+    title: "Temperature Lags Behind Daylight",
+    blurb: "The Earth's surface continues absorbing heat after the summer solstice, resulting in a thermal lag between daylight and temperature.",
     cities: ["Houston"], daylight: true, explore: false, hint: "Press Next to continue.",
     notes: () => [
-      note("Daylight peaks in June", "Houston's longest day gives it 14.1 hours of light.", x(6), yD(14.06), -90, -75, 150),
-      note("The heat peaks two months later", "Ground and water keep absorbing warmth even as days shorten.", x(8), yT(94.9), -20, 250)
+      note("Longest Day — June", "Houston gets 14.1 hours of daylight, the most of the year.", x(6), yD(14.06), -180, 110, 160),
+      note("Warmest Month — August", "94.9°F — about two months after the daylight peak.", x(8), yT(94.9), -20, 250)
     ]
   },
   3: {
-    title: "Different Cities: same shape but different size",
-    blurb: "All four cities peak in summer and bottom out in winter, but how far they swing depends on their geography.",
+    title: "Geography Changes the Temperature Response",
+    blurb: "Cities at similar latitudes receive nearly the same daylight, but geography shapes how temperatures respond.",
     cities: CITIES, daylight: false, explore: false, hint: "Press Next to continue.",
     notes: () => [
       note("Los Angeles barely moves", "A 16.6°F range all year, despite a wider daylight swing than Houston's.", x(1), yT(68.0), 50, -120),
@@ -55,8 +52,8 @@ const SCENES = {
     ]
   },
   4: {
-    title: "Now look for yourself",
-    blurb: "Pick a city to compare its temperature curve to its own daylight curve.",
+    title: "Explore the Daylight–Temperature Relationship",
+    blurb: "Select a city to compare its annual daylight and temperature cycles.",
     cities: CITIES, daylight: true, explore: true, hint: "Pick a city, then hover any point on the line.",
     notes: () => {
       const rows = byCity.get(state.city);
@@ -77,6 +74,13 @@ const gYR = g.append("g").attr("class", "axis").attr("transform", `translate(${i
 
 gYL.call(d3.axisLeft(yT).ticks(6));
 gX.call(d3.axisBottom(x).tickValues(d3.range(1, 13)).tickFormat(m => MONTHS[m - 1]));
+
+function axisTitle(y, text) {
+  return g.append("text").attr("class", "axis-title")
+    .attr("transform", "rotate(-90)").attr("y", y).attr("text-anchor", "end").text(text);
+}
+axisTitle(-44, "Temperature (°F)");
+const gYRTitle = axisTitle(iw + 56, "Daylight (hours)");
 
 const lineTemp = d3.line().x(d => x(d.month_num)).y(d => yT(d.avg_high_f)).curve(d3.curveMonotoneX);
 const lineDay  = d3.line().x(d => x(d.month_num)).y(d => yD(d.daylight_hours)).curve(d3.curveMonotoneX);
@@ -133,6 +137,7 @@ function render() {
   d3.selectAll(".chip").attr("aria-pressed", c => c === state.city);
 
   gYR.style("opacity", S.daylight ? 1 : 0).call(d3.axisRight(yD).ticks(5));
+  gYRTitle.style("opacity", S.daylight ? 1 : 0);
 
   const dayCity = S.daylight ? (state.scene === 4 ? state.city : "Houston") : null;
   const dayData = dayCity ? [byCity.get(dayCity)] : [];
