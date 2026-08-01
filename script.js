@@ -36,22 +36,22 @@ const SCENES = {
   },
   2: {
     title: "Temperature Lags Behind Daylight",
-    blurb: "The Earth's surface continues absorbing heat after the summer solstice, resulting in a thermal lag between daylight and temperature.",
+    blurb: "The Earth's surface continues absorbing heat after the summer solstice, resulting in the temperature to peak weeks after daylight",
     cities: ["Houston"], daylight: true, explore: false, hint: "Press Next to continue.",
     daylightCities: () => ["Houston"],
     notes: () => [
       note("Longest Day - June", "Houston gets 14.1 hours of daylight, the most of the year.", x(6), yD(14.06), -180, 110, 160),
-      note("Warmest Month - August", "94.9°F, about two months after the daylight peak.", x(8), yT(94.9), -20, 250)
+      note("Warmest Month - August", "Houston reaches 94.9°F, about two months after the daylight peak.", x(8), yT(94.9), -20, 250)
     ]
   },
   3: {
-    title: "Geography Changes the Temperature Response",
-    blurb: "Houston and LA sit at similar latitudes and receive almost the same daylight, but geography shapes how their temperatures respond.",
+    title: "Same Daylight, Different Temperatures",
+    blurb: "Houston and Los Angleles sit at similar latitudes and receive almost the same daylight, but geography shapes how their temperatures respond.",
     cities: ["Houston", "Los Angeles"], daylight: true, explore: false, hint: "Press Next to continue.",
     daylightCities: () => ["Houston", "Los Angeles"],
     notes: () => [
-      note("Los Angeles barely moves", "A 16.6°F range all year, despite a wider daylight swing than Houston's.", x(1), yT(68.0), 50, -120),
-      note("Same Daylight, Different Heat", "In September, Houston and LA get almost identical daylight (12.4 hours), but Houston is at 90.4°F while LA has cooled to 83.0°F.", x(9), yT(90.4), -100, 180, 200)
+      note("Ocean Keeps Temperatures Stable", "The cool Pacific limits LA's annual temperature range to 16.6°F, about half of Houston's 31.1°F.", x(1), yT(68.0), 35, -90),
+      note("Warmer Despite Similar Daylight", "In September, daylight differs by only 0.1 hours, but Houston is 7.4°F warmer than LA.", x(9), yT(90.4), -100, 180, 200)
     ]
   },
   4: {
