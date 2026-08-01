@@ -46,7 +46,7 @@ const SCENES = {
   },
   3: {
     title: "Same Daylight, Different Temperatures",
-    blurb: "Houston and Los Angleles sit at similar latitudes and receive almost the same daylight, but geography shapes how their temperatures respond.",
+    blurb: "Houston and Los Angeles sit at similar latitudes and receive almost the same daylight, but geography shapes how their temperatures respond.",
     cities: ["Houston", "Los Angeles"], daylight: true, explore: false, hint: "Press Next to continue.",
     daylightCities: () => ["Houston", "Los Angeles"],
     notes: () => [
